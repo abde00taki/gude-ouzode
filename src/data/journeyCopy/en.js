@@ -1,6 +1,14 @@
 export const en = {
   brand: "Ousama · Ouzoud",
   footer: "Ousama — licensed local guide · Ouzoud Waterfalls, Azilal, Morocco",
+  location: {
+    eyebrow: "Our Location",
+    title: "Where the Adventure Begins",
+    subtitle:
+      "Ouzoud Waterfalls — Azilal Province, Morocco. Meet Ousama at agreed points with clear signage and punctual timing.",
+    mapTitle: "Map of Ouzoud Waterfalls, Azilal, Morocco",
+    coordsHint: "32.015° N · 6.716° W (approximate centre)",
+  },
   chapters: [
     {
       id: "hero",

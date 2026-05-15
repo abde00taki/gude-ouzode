@@ -1,6 +1,14 @@
 export const es = {
   brand: "Ousama · Ouzoud",
   footer: "Ousama — guía local · Cascadas de Ouzoud, Azilal, Marruecos",
+  location: {
+    eyebrow: "Nuestra ubicación",
+    title: "Donde comienza la aventura",
+    subtitle:
+      "Cascadas de Ouzoud — provincia de Azilal, Marruecos. Ousama os encuentra en puntos acordados, con señalización clara y puntualidad.",
+    mapTitle: "Mapa de las cascadas de Ouzoud, Azilal, Marruecos",
+    coordsHint: "32,015° N · 6,716° W (centro aproximado)",
+  },
   chapters: [
     {
       id: "hero",

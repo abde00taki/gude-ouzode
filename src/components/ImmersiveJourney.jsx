@@ -8,6 +8,7 @@ import musicImg from "../assets/music.png";
 
 import { useLanguage } from "../context/LanguageContext";
 import { assertJourneyImage } from "../lib/journeyImageAssert";
+import { LocationMap } from "./LocationMap";
 import { JourneyChapter } from "./journey/JourneyChapter";
 import { JourneyHeader } from "./journey/JourneyHeader";
 import { JourneyHero } from "./journey/JourneyHero";
@@ -70,6 +71,7 @@ export function ImmersiveJourney() {
           );
         })}
       </main>
+      <LocationMap />
       <footer className="border-t border-stone-200/80 bg-emerald-950/5 py-12 text-center text-sm text-stone-600 dark:border-white/10 dark:bg-slate-950/80 dark:text-slate-400">
         <p className="mx-auto max-w-lg px-4 leading-relaxed">{t.footer}</p>
       </footer>
