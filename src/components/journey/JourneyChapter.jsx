@@ -1,4 +1,4 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 import { motion } from "framer-motion";
 import { useLanguage } from "../../context/LanguageContext";
 import { assertJourneyImage } from "../../lib/journeyImageAssert";
@@ -12,6 +12,7 @@ import {
 export function JourneyChapter({ chapter, image, reverseDesktop }) {
   const { dir } = useLanguage();
   const [loadError, setLoadError] = useState(null);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   assertJourneyImage(
     image,
@@ -41,18 +42,31 @@ export function JourneyChapter({ chapter, image, reverseDesktop }) {
             variants={journeyItemVariants}
             className={`relative overflow-hidden rounded-3xl shadow-xl shadow-emerald-900/10 ring-1 ring-stone-900/5 dark:shadow-black/50 dark:ring-white/10 ${imageOrder}`}
           >
-            <img
-              src={image}
-              alt=""
-              className="aspect-[4/3] h-full w-full object-cover md:aspect-[5/4]"
-              loading="lazy"
-              decoding="async"
-              onError={() =>
-                setLoadError(
-                  `Failed to load image for section "${chapter.id}". Verify the matching file exists under src/assets/ and is a valid JPEG.`
-                )
-              }
-            />
+            <div className="relative aspect-[4/3] w-full bg-stone-200 dark:bg-slate-800 md:aspect-[5/4]">
+              {!imageLoaded && !loadError ? (
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-0 animate-pulse bg-gradient-to-br from-stone-200 via-emerald-50/60 to-stone-100 dark:from-slate-800 dark:via-emerald-950/30 dark:to-slate-900"
+                />
+              ) : null}
+              <img
+                src={image}
+                alt=""
+                width={800}
+                height={600}
+                className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ease-out ${
+                  imageLoaded ? "opacity-100" : "opacity-0"
+                }`}
+                loading="lazy"
+                decoding="async"
+                onLoad={() => setImageLoaded(true)}
+                onError={() =>
+                  setLoadError(
+                    `Failed to load image for section "${chapter.id}". Verify the matching file exists under src/assets/ and is a valid image.`
+                  )
+                }
+              />
+            </div>
             {loadError ? (
               <div
                 className="absolute inset-0 z-[1] flex items-center justify-center bg-red-950/90 p-4 text-center text-xs font-medium leading-snug text-red-50 sm:text-sm"

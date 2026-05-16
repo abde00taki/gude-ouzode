@@ -25,6 +25,7 @@ export function JourneyHero({ chapter, image }) {
         src={image}
         alt=""
         className="absolute inset-0 h-full w-full object-cover"
+        loading="eager"
         decoding="async"
         fetchPriority="high"
         onError={() =>
